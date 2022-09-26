@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <TitleBanner />
       <NavBar />
       <Routes>
