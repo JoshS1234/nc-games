@@ -21,7 +21,7 @@ flex-direction: row;
   background-color: rgb(193, 248, 255);
   list-style-type: none;
   width:90%;
-  height: 40%;
+  height: 90%;
   padding: 0% 0% 1% 0%;
   margin: 1% auto;
   border: solid 2px;
@@ -37,5 +37,7 @@ ul {
 @media screen and (min-width:800px) {
   .reviewCardBrief {
     width:40%;
+    height: 40%;
+
   }
 }

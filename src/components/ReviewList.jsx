@@ -16,7 +16,6 @@ const ReviewList = () => {
       <h1>Review List</h1>
       <ul>
         {reviewList.map((review) => {
-          // console.log(review);
           return (
             <li key={review.review_id} className="reviewCardBrief">
               <ReviewCardBrief review={review} />
