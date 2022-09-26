@@ -3,28 +3,39 @@ body {
   margin: 0px;
   text-align: center;
   background-color: rgb(155, 235, 255);
-  /* justify-content: center; */
 }
 
 img {
-  width:min(40%, 200px);
-  height:min(40%, 200px);
+  width:min(40%, 300px);
+  height:min(40%, 300px);
   border-radius:10%;
 }
 
 ul {
   display: flex;
-  flex-wrap: wrap;
+flex-wrap: wrap;
+flex-direction: row;
 }
 
 .reviewCardBrief {
   background-color: rgb(193, 248, 255);
   list-style-type: none;
-  width:40%;
+  width:90%;
   height: 40%;
-  /* margin: 1% 5% 1% 5%; */
   padding: 0% 0% 1% 0%;
   margin: 1% auto;
   border: solid 2px;
   border-radius: 5%
+}
+
+ul {
+  
+}
+
+/* These are the PC updates for CSS 
+(if the screen is under 800px then do this */
+@media screen and (min-width:800px) {
+  .reviewCardBrief {
+    width:40%;
+  }
 }

@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const BaseURL = "https://my-backend-server-josh.herokuapp.com/api";
+const api = axios.create({
+  baseURL: "https://my-backend-server-josh.herokuapp.com",
+});
 
 export const getReviewList = () => {
-  return axios.get(BaseURL + `/reviews`);
+  return api.get(`/api/reviews`);
 };
