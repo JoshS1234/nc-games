@@ -6,9 +6,8 @@ const ReviewList = () => {
   const [reviewList, setReviewList] = useState([]);
 
   useEffect(() => {
-    getReviewList().then((response) => {
-      const reviewList = response.data.reviewList;
-      setReviewList(reviewList);
+    getReviewList().then((output) => {
+      setReviewList(output);
     });
   }, []);
 

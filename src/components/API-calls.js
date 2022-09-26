@@ -5,5 +5,7 @@ const api = axios.create({
 });
 
 export const getReviewList = () => {
-  return api.get(`/api/reviews`);
+  return api.get(`/api/reviews`).then(({ data }) => {
+    return data.reviewList;
+  });
 };
