@@ -1,12 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { upvoteReviewWithID } from "./API-calls";
 
 const ReviewCardFull = ({ singleReviewObj }) => {
-  const review = singleReviewObj;
+  const [reviewState, setReviewState] = useState(singleReviewObj);
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
   const redirectToReviews = (event) => {
     event.preventDefault();
     navigate(`/review-list`);
+  };
+
+  const upvoteFunction = (event) => {
+    setIsError(false);
+    event.preventDefault();
+    const newReviewObj = { ...reviewState };
+    newReviewObj.votes += 1;
+    upvoteReviewWithID(reviewState.review_id).catch((err) => {
+      setIsError(true);
+      newReviewObj.votes -= 1;
+    });
+    setReviewState(newReviewObj);
   };
 
   return (
@@ -18,18 +33,32 @@ const ReviewCardFull = ({ singleReviewObj }) => {
       >
         Back to reviews...
       </button>
-      <h3>Title: {review.title}</h3>
+      <h3>Title: {reviewState.title}</h3>
       <img
-        src={review.review_img_url}
-        alt={review.title}
+        src={reviewState.review_img_url}
+        alt={reviewState.title}
         className="fullReviewImg"
       />
-      <h4>Category: {review.category}</h4>
-      <h4>Review: {review.review_body}</h4>
-      <h4>Posted by: {review.owner}</h4>
-      <h4>Game designer: {review.designer}</h4>
-      <h4>Posted at: {review.created_at}</h4>
-      <h4>Upvotes: {review.votes}</h4>
+      <h4>Category: {reviewState.category}</h4>
+      <h4>Review: {reviewState.review_body}</h4>
+      <h4>Posted by: {reviewState.owner}</h4>
+      <h4>Game designer: {reviewState.designer}</h4>
+      <h4>Posted at: {reviewState.created_at}</h4>
+      <div>
+        {isError ? <h3>There was an upvote error</h3> : <></>}
+
+        <h4>
+          Upvotes: {reviewState.votes}{" "}
+          <button
+            value={reviewState.votes}
+            onClick={(event) => {
+              upvoteFunction(event);
+            }}
+          >
+            +1 upvote
+          </button>
+        </h4>
+      </div>
     </div>
   );
 };
