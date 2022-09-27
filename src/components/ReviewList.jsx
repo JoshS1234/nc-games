@@ -6,9 +6,11 @@ import {
   getReviewList,
 } from "./API-calls";
 import ReviewCardBrief from "./ReviewCardBrief";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const ReviewList = () => {
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const [reviewList, setReviewList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [ownerList, setOwnerList] = useState([]);
@@ -45,24 +47,22 @@ const ReviewList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    let AppendUrl = ``;
-    let filterCount = 0;
-    for (const key in filterObj) {
-      if (filterObj[key] !== "All") {
-        if (filterCount === 0) {
-          AppendUrl += `?${key}=${filterObj[key]}`;
-        } else {
-          AppendUrl += `&${key}=${filterObj[key]}`;
-        }
-        filterCount += 1;
-      }
-    }
-    getReviewList(AppendUrl).then((output) => {
+
+    getReviewList().then((output) => {
       setReviewList(output);
-      navigate(`/review-list${AppendUrl}`);
       setIsLoading(false);
     });
-  }, [filterObj, navigate]);
+  }, [filterObj, searchParams, navigate]);
+
+  const formSubmitFunction = (event) => {
+    event.preventDefault();
+    let params = {
+      category: event.target.categoryFilter.value,
+      owner: event.target.ownerFilter.value,
+      designer: event.target.designerFilter.value,
+    };
+    setSearchParams(params);
+  };
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -70,50 +70,57 @@ const ReviewList = () => {
     return (
       <div>
         <h1>Review List</h1>
-        <label htmlFor="categoryFilter">Categories</label>
-        <select
-          id="categoryFilter"
-          value={filterObj.category}
-          onChange={(event) => {
-            const newFilterObj = { ...filterObj };
-            newFilterObj.category = event.target.value;
-            setFilterObj(newFilterObj);
+        <form
+          onSubmit={(event) => {
+            formSubmitFunction(event);
           }}
         >
-          {categoryList.map((category) => {
-            return <option key={category}>{category}</option>;
-          })}
-        </select>
+          <label htmlFor="categoryFilter">Categories</label>
+          <select
+            id="categoryFilter"
+            value={filterObj.category}
+            onChange={(event) => {
+              const newFilterObj = { ...filterObj };
+              newFilterObj.category = event.target.value;
+              setFilterObj(newFilterObj);
+            }}
+          >
+            {categoryList.map((category) => {
+              return <option key={category}>{category}</option>;
+            })}
+          </select>
 
-        <label htmlFor="ownerFilter">Posted by</label>
-        <select
-          id="ownerFilter"
-          value={filterObj.owner}
-          onChange={(event) => {
-            const newFilterObj = { ...filterObj };
-            newFilterObj.owner = event.target.value;
-            setFilterObj(newFilterObj);
-          }}
-        >
-          {ownerList.map((owner) => {
-            return <option key={owner}>{owner}</option>;
-          })}
-        </select>
+          <label htmlFor="ownerFilter">Posted by</label>
+          <select
+            id="ownerFilter"
+            value={filterObj.owner}
+            onChange={(event) => {
+              const newFilterObj = { ...filterObj };
+              newFilterObj.owner = event.target.value;
+              setFilterObj(newFilterObj);
+            }}
+          >
+            {ownerList.map((owner) => {
+              return <option key={owner}>{owner}</option>;
+            })}
+          </select>
 
-        <label htmlFor="DesignerFilter">Designer</label>
-        <select
-          id="DesignerFilter"
-          value={filterObj.designer}
-          onChange={(event) => {
-            const newFilterObj = { ...filterObj };
-            newFilterObj.designer = event.target.value;
-            setFilterObj(newFilterObj);
-          }}
-        >
-          {designerList.map((designer) => {
-            return <option key={designer}>{designer}</option>;
-          })}
-        </select>
+          <label htmlFor="designerFilter">Designer</label>
+          <select
+            id="designerFilter"
+            value={filterObj.designer}
+            onChange={(event) => {
+              const newFilterObj = { ...filterObj };
+              newFilterObj.designer = event.target.value;
+              setFilterObj(newFilterObj);
+            }}
+          >
+            {designerList.map((designer) => {
+              return <option key={designer}>{designer}</option>;
+            })}
+          </select>
+          <button>Submit</button>
+        </form>
 
         {reviewList.length === 0 ? (
           <h1>No results found!</h1>
