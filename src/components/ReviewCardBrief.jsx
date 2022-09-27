@@ -6,6 +6,7 @@ const ReviewCardBrief = ({ review }) => {
       <h4>Category: {review.category}</h4>
       <h4>Posted by: {review.owner}</h4>
       <h4>Posted at: {review.created_at}</h4>
+      <h4>Game designer: {review.designer}</h4>
       <h4>Upvotes: {review.votes}</h4>
     </>
   );
