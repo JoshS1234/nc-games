@@ -41,3 +41,9 @@ export const getDesignerList = () => {
     return data.designers;
   });
 };
+
+export const getReviewWithID = (review_id) => {
+  return api.get(`/api/reviews/${review_id}`).then(({ data }) => {
+    return data.reviews;
+  });
+};
