@@ -6,7 +6,7 @@ import {
   getReviewList,
 } from "./API-calls";
 import ReviewCardBrief from "./ReviewCardBrief";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const ReviewList = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +22,6 @@ const ReviewList = () => {
     owner: "All",
     designer: "All",
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -52,7 +51,7 @@ const ReviewList = () => {
       setReviewList(output);
       setIsLoading(false);
     });
-  }, [filterObj, searchParams, navigate]);
+  }, [filterObj, searchParams]);
 
   const formSubmitFunction = (event) => {
     event.preventDefault();

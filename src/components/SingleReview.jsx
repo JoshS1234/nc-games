@@ -1,16 +1,22 @@
 import { useParams } from "react-router";
 import ReviewCardFull from "./ReviewCardFull";
+import { getReviewWithID } from "./API-calls";
+import { useEffect, useState } from "react";
+
 const SingleReview = () => {
+  const [singleReviewObj, setSingleReviewObj] = useState({});
   const review_id = useParams().review_id;
-  console.log(review_id);
+
+  useEffect(() => {
+    getReviewWithID(review_id).then((data) => {
+      console.log(data);
+      setSingleReviewObj(data);
+    });
+  }, [review_id]);
 
   return (
     <section>
-      <h1>
-        The individual review router is working, this is review number:{" "}
-        {review_id}
-      </h1>
-      <ReviewCardFull />
+      <ReviewCardFull singleReviewObj={singleReviewObj} />
     </section>
   );
 };
