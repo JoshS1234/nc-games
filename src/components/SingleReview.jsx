@@ -6,18 +6,25 @@ import { useEffect, useState } from "react";
 const SingleReview = () => {
   const [singleReviewObj, setSingleReviewObj] = useState({});
   const review_id = useParams().review_id;
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getReviewWithID(review_id).then((data) => {
-      console.log(data);
+      // console.log(data);
       setSingleReviewObj(data);
+      setIsLoading(false);
     });
   }, [review_id]);
 
-  return (
-    <section>
-      <ReviewCardFull singleReviewObj={singleReviewObj} />
-    </section>
-  );
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  } else {
+    return (
+      <section>
+        <ReviewCardFull singleReviewObj={singleReviewObj} />
+      </section>
+    );
+  }
 };
 export default SingleReview;
