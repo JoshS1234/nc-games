@@ -55,3 +55,9 @@ export const upvoteReviewWithID = (review_id) => {
       return data.reviews;
     });
 };
+
+export const getCommentsForReview = (review_id) => {
+  return api.get(`/api/reviews/${review_id}/comments`).then(({ data }) => {
+    return data;
+  });
+};
