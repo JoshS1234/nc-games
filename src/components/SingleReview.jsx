@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import ReviewCardFull from "./ReviewCardFull";
 import { getReviewWithID } from "./API-calls";
 import { useEffect, useState } from "react";
+import CommentList from "./CommentList";
+import AddComment from "./AddComment";
 
 const SingleReview = () => {
   const [singleReviewObj, setSingleReviewObj] = useState({});
@@ -11,7 +13,6 @@ const SingleReview = () => {
   useEffect(() => {
     setIsLoading(true);
     getReviewWithID(review_id).then((data) => {
-      // console.log(data);
       setSingleReviewObj(data);
       setIsLoading(false);
     });
@@ -23,6 +24,8 @@ const SingleReview = () => {
     return (
       <section>
         <ReviewCardFull singleReviewObj={singleReviewObj} />
+        <AddComment />
+        <CommentList review_id={review_id} />
       </section>
     );
   }

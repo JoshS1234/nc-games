@@ -39,6 +39,19 @@ flex-direction: row;
   border-radius: 5%
 }
 
+.commentCard {
+  background-color: rgb(244, 244, 190);
+  width:80%;
+  height: 90%;
+  padding: 0% 0% 1% 0%;
+  margin: 1% auto;
+  border: solid 2px;
+  border-radius: 5%
+}
+li {
+  list-style-type: none;
+}
+
 ul {
   
 }
@@ -59,6 +72,11 @@ ul {
 
   .reviewCardFull {
     width:80%;
+    height: 40%;
+  }
+
+  .commentCard {
+    width:60%;
     height: 40%;
   }
 }
