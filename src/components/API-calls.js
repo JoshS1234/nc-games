@@ -61,3 +61,16 @@ export const getCommentsForReview = (review_id) => {
     return data;
   });
 };
+
+export const uploadComment = (review_id, comment) => {
+  console.log(`/api/reviews/${review_id}/comments`, review_id, comment);
+  return api
+    .post(`/api/reviews/${review_id}/comments`, comment)
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
