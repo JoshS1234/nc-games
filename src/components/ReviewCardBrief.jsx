@@ -31,6 +31,7 @@ const ReviewCardBrief = ({ review }) => {
       <h4>Category: {review.category}</h4>
       <h4>Posted by: {review.owner}</h4>
       <h4>Game designer: {review.designer}</h4>
+      <h4>Comment Count: {review.comment_count}</h4>
       <h4>Posted at: {review.created_at}</h4>
       <div>
         {isError ? <h3>There was an upvote error</h3> : <></>}

@@ -19,6 +19,7 @@ export const getReviewList = () => {
       filterCount += 1;
     }
   }
+
   return api.get(`/api/reviews${AppendUrl}`).then(({ data }) => {
     return data.reviewList;
   });

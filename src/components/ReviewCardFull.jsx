@@ -43,6 +43,7 @@ const ReviewCardFull = ({ singleReviewObj }) => {
       <h4>Review: {reviewState.review_body}</h4>
       <h4>Posted by: {reviewState.owner}</h4>
       <h4>Game designer: {reviewState.designer}</h4>
+      <h4>Comment Count: {reviewState.comment_count}</h4>
       <h4>Posted at: {reviewState.created_at}</h4>
       <div>
         {isError ? <h3>There was an upvote error</h3> : <></>}
