@@ -1,10 +1,6 @@
-import { useState } from "react";
-
-const ReviewListSort = () => {
-  const [sortBasedOn, setSortBasedOn] = useState("Date");
-
+const ReviewListSort = ({ sortBasedOn, setSortBasedOn }) => {
   return (
-    <>
+    <div>
       <h3 htmlFor="sort_by">Sort by: </h3>
       <select
         id="sort_by"
@@ -23,7 +19,7 @@ const ReviewListSort = () => {
           votes
         </option>
       </select>
-    </>
+    </div>
   );
 };
 export default ReviewListSort;
