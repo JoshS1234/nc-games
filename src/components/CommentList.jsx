@@ -15,6 +15,8 @@ const CommentList = ({ review_id }) => {
 
   if (isLoading) {
     return <h1>Loading...</h1>;
+  } else if (commentList.length === 0) {
+    return <h1>No comments</h1>;
   } else {
     return (
       <>
