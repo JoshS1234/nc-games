@@ -2,7 +2,11 @@ import CommentCard from "./CommentCard";
 import { useEffect, useState } from "react";
 import { getCommentsForReview } from "./API-calls";
 
-const CommentList = ({ review_id, newCommentBool }) => {
+const CommentList = ({
+  review_id,
+  changeCommentBool,
+  setChangeCommentBool,
+}) => {
   const [commentList, setCommentList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,7 +16,7 @@ const CommentList = ({ review_id, newCommentBool }) => {
       setCommentList(comments);
       setIsLoading(false);
     });
-  }, [review_id, newCommentBool]);
+  }, [review_id, changeCommentBool]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -21,7 +25,7 @@ const CommentList = ({ review_id, newCommentBool }) => {
   } else {
     return (
       <>
-        {newCommentBool ? (
+        {changeCommentBool ? (
           <li key={new Date()}>
             <h2>Comment is posting</h2>
           </li>
@@ -31,7 +35,11 @@ const CommentList = ({ review_id, newCommentBool }) => {
         {commentList.map((comment) => {
           return (
             <li key={comment.comment_id}>
-              <CommentCard comment={comment} />
+              <CommentCard
+                comment={comment}
+                changeCommentBool={changeCommentBool}
+                setChangeCommentBool={setChangeCommentBool}
+              />
             </li>
           );
         })}
