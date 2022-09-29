@@ -1,7 +1,8 @@
-const ReviewListSort = ({ sortBasedOn, setSortBasedOn }) => {
+const ReviewListSort = ({ sortBasedOn, setSortBasedOn, isAsc, setIsAsc }) => {
   return (
     <div>
-      <h3 htmlFor="sort_by">Sort by: </h3>
+      <h3>Sorting: </h3>
+      <label htmlFor="sort_by">Sort by:</label>
       <select
         id="sort_by"
         value={sortBasedOn}
@@ -17,6 +18,22 @@ const ReviewListSort = ({ sortBasedOn, setSortBasedOn }) => {
         </option>
         <option key="votes" value="votes">
           votes
+        </option>
+      </select>
+
+      <label htmlFor="ascdesc"></label>
+      <select
+        id="ascdesc"
+        value={isAsc}
+        onChange={(event) => {
+          setIsAsc(event.target.value);
+        }}
+      >
+        <option key="asc" value="asc">
+          asc
+        </option>
+        <option key="desc" value="desc">
+          desc
         </option>
       </select>
     </div>

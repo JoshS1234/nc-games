@@ -19,6 +19,7 @@ const ReviewList = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [sortBasedOn, setSortBasedOn] = useState("Date");
+  const [isAsc, setIsAsc] = useState("asc");
 
   const [filterObj, setFilterObj] = useState({
     category: "All",
@@ -54,7 +55,7 @@ const ReviewList = () => {
       setReviewList(output);
       setIsLoading(false);
     });
-  }, [filterObj, sortBasedOn, searchParams]);
+  }, [searchParams]);
 
   const formSubmitFunction = (event) => {
     event.preventDefault();
@@ -63,6 +64,7 @@ const ReviewList = () => {
       category: event.target.categoryFilter.value,
       owner: event.target.ownerFilter.value,
       designer: event.target.designerFilter.value,
+      order: event.target.ascdesc.value,
     };
     setSearchParams(params);
   };
@@ -128,6 +130,8 @@ const ReviewList = () => {
           <ReviewListSort
             sortBasedOn={sortBasedOn}
             setSortBasedOn={setSortBasedOn}
+            isAsc={isAsc}
+            setIsAsc={setIsAsc}
           />
           <div>
             <button>Sort and Filter</button>
