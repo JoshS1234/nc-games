@@ -3,6 +3,7 @@ import { uploadComment } from "./API-calls";
 
 const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   const [isPosting, setIsPosting] = useState(false);
+  const [isError, setIsError] = useState("");
 
   const createCommentAndUpload = (event) => {
     event.preventDefault();
@@ -13,11 +14,16 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     };
 
     setIsPosting(true);
-    setAddCommentBool(true);
-    uploadComment(review_id, commentToPost).then((data) => {
-      setIsPosting(false);
-      setAddCommentBool(false);
-    });
+    // setAddCommentBool(!addCommentBool);
+    uploadComment(review_id, commentToPost)
+      .then((data) => {
+        setIsPosting(false);
+        setAddCommentBool(!addCommentBool);
+      })
+      .catch((err) => {
+        setIsPosting(false);
+        setIsError(err.msg);
+      });
   };
 
   if (isPosting) {
@@ -25,6 +31,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   } else {
     return (
       <div>
+        <h1>{isError}</h1>
         <form
           onSubmit={(event) => {
             createCommentAndUpload(event);

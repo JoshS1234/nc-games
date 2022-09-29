@@ -9,18 +9,25 @@ const SingleReview = () => {
   const [singleReviewObj, setSingleReviewObj] = useState({});
   const review_id = useParams().review_id;
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState("");
 
   const [addCommentBool, setAddCommentBool] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getReviewWithID(review_id).then((data) => {
-      setSingleReviewObj(data);
-      setIsLoading(false);
-    });
-  }, [review_id, addCommentBool]);
+    getReviewWithID(review_id)
+      .then((data) => {
+        setSingleReviewObj(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.msg);
+      });
+  }, [addCommentBool]);
 
-  if (isLoading) {
+  if (isError) {
+    return <h1>{isError}</h1>;
+  } else if (isLoading) {
     return <h1>Loading...</h1>;
   } else {
     return (
@@ -31,7 +38,7 @@ const SingleReview = () => {
           setAddCommentBool={setAddCommentBool}
           addCommentBool={addCommentBool}
         />
-        <CommentList review_id={review_id} />
+        <CommentList review_id={review_id} addCommentBool={setAddCommentBool} />
       </section>
     );
   }

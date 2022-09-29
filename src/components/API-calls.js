@@ -20,47 +20,95 @@ export const getReviewList = () => {
     }
   }
 
-  return api.get(`/api/reviews${AppendUrl}`).then(({ data }) => {
-    return data.reviewList;
-  });
+  return api
+    .get(`/api/reviews${AppendUrl}`)
+    .then(({ data }) => {
+      return data.reviewList;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with retrieving the review list",
+      });
+    });
 };
 
 export const getCategoryList = () => {
-  return api.get(`/api/categories`).then(({ data }) => {
-    return data;
-  });
+  return api
+    .get(`/api/categories`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+      return Promise.reject({
+        msg: "There was an error with retrieving the category list",
+      });
+    });
 };
 
 export const getOwnerList = () => {
-  return api.get(`/api/owners`).then(({ data }) => {
-    return data;
-  });
+  return api
+    .get(`/api/owners`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with retrieving the owner list",
+      });
+    });
 };
 
 export const getDesignerList = () => {
-  return api.get(`/api/designers`).then(({ data }) => {
-    return data.designers;
-  });
+  return api
+    .get(`/api/designers`)
+    .then(({ data }) => {
+      return data.designers;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with retrieving the designer list",
+      });
+    });
 };
 
 export const getReviewWithID = (review_id) => {
-  return api.get(`/api/reviews/${review_id}`).then(({ data }) => {
-    return data.reviews;
-  });
+  return api
+    .get(`/api/reviews/${review_id}`)
+    .then(({ data }) => {
+      return data.reviews;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with retrieving the review with this ID",
+      });
+    });
 };
 
 export const upvoteReviewWithID = (review_id) => {
   return api
-    .patch(`/api/reviews/${review_id}`, { inc_votes: 1 })
+    .patch(`/api/reviews/${review_id}`, { inc_votes: "a" })
     .then(({ data }) => {
       return data.reviews;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with upvoting this",
+      });
     });
 };
 
 export const getCommentsForReview = (review_id) => {
-  return api.get(`/api/reviews/${review_id}/comments`).then(({ data }) => {
-    return data;
-  });
+  return api
+    .get(`/api/reviews/${review_id}/comments`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      return Promise.reject({
+        msg: "There was an error with retrieving the comments list",
+      });
+    });
 };
 
 export const uploadComment = (review_id, comment) => {
@@ -70,7 +118,9 @@ export const uploadComment = (review_id, comment) => {
       return data;
     })
     .catch((err) => {
-      console.log(err);
+      return Promise.reject({
+        msg: "There was an error with uploading this comment",
+      });
     });
 };
 
