@@ -11,6 +11,7 @@ const SingleReview = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [addCommentBool, setAddCommentBool] = useState(false);
+  const [deleteCommentBool, setDeleteCommentBool] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,8 +34,8 @@ const SingleReview = () => {
         />
         <CommentList
           review_id={review_id}
-          addCommentBool={addCommentBool}
-          setAddCommentBool={setAddCommentBool}
+          addCommentBool={deleteCommentBool}
+          setAddCommentBool={setDeleteCommentBool}
         />
       </section>
     );

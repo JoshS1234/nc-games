@@ -2,7 +2,13 @@ import CommentCard from "./CommentCard";
 import { useEffect, useState } from "react";
 import { getCommentsForReview } from "./API-calls";
 
-const CommentList = ({ review_id, addCommentBool, setAddCommentBool }) => {
+const CommentList = ({
+  review_id,
+  addCommentBool,
+  setAddCommentBool,
+  deleteCommentBool,
+  setDeleteCommentBool,
+}) => {
   const [commentList, setCommentList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,8 +40,8 @@ const CommentList = ({ review_id, addCommentBool, setAddCommentBool }) => {
             <li key={comment.comment_id}>
               <CommentCard
                 comment={comment}
-                changeCommentBool={addCommentBool}
-                setChangeCommentBool={setAddCommentBool}
+                deleteCommentBool={addCommentBool}
+                setDeleteCommentBool={setAddCommentBool}
               />
             </li>
           );
