@@ -13,9 +13,7 @@ const AddComment = ({ review_id, changeCommentBool, setChangeCommentBool }) => {
     };
 
     setIsPosting(true);
-    // setChangeCommentBool(true);
     uploadComment(review_id, commentToPost).then((data) => {
-      console.log(data);
       setIsPosting(false);
       setChangeCommentBool(!changeCommentBool);
     });

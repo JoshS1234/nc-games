@@ -17,7 +17,6 @@ const CommentCard = ({ comment, changeCommentBool, setChangeCommentBool }) => {
     // setChangeCommentBool(true);
     deleteComment(comment.comment_id).then((data) => {
       setChangeCommentBool(!changeCommentBool);
-      console.log(data);
     });
   };
 

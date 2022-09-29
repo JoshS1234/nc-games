@@ -77,12 +77,7 @@ export const uploadComment = (review_id, comment) => {
 };
 
 export const deleteComment = (comment_id) => {
-  return api
-    .delete(`/api/comments/${comment_id}`)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api.delete(`/api/comments/${comment_id}`).catch((err) => {
+    console.log(err);
+  });
 };
