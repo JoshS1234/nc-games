@@ -16,6 +16,7 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
     setDeleteCommentBool(true);
     event.preventDefault();
     deleteComment(comment.comment_id).then((data) => {
+      console.log("deleted");
       setDeleteCommentBool(false);
     });
   };

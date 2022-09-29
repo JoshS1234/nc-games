@@ -15,11 +15,10 @@ const CommentList = ({
   useEffect(() => {
     setIsLoading(true);
     getCommentsForReview(review_id).then(({ comments }) => {
-      console.log(addCommentBool);
       setCommentList(comments);
       setIsLoading(false);
     });
-  }, [review_id, addCommentBool]);
+  }, [review_id, addCommentBool, deleteCommentBool]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -40,8 +39,8 @@ const CommentList = ({
             <li key={comment.comment_id}>
               <CommentCard
                 comment={comment}
-                deleteCommentBool={addCommentBool}
-                setDeleteCommentBool={setAddCommentBool}
+                deleteCommentBool={deleteCommentBool}
+                setDeleteCommentBool={setDeleteCommentBool}
               />
             </li>
           );

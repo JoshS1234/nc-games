@@ -34,8 +34,8 @@ const SingleReview = () => {
         />
         <CommentList
           review_id={review_id}
-          addCommentBool={deleteCommentBool}
-          setAddCommentBool={setDeleteCommentBool}
+          deleteCommentBool={deleteCommentBool}
+          setDeleteCommentBool={setDeleteCommentBool}
         />
       </section>
     );
