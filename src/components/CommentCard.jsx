@@ -1,7 +1,7 @@
 import { deleteComment } from "./API-calls";
 import { useEffect, useState } from "react";
 
-const CommentCard = ({ comment, changeCommentBool, setChangeCommentBool }) => {
+const CommentCard = ({ comment, addCommentBool, setAddCommentBool }) => {
   const [correctUser, setCorrectUser] = useState(false);
 
   useEffect(() => {
@@ -12,13 +12,13 @@ const CommentCard = ({ comment, changeCommentBool, setChangeCommentBool }) => {
     }
   }, [comment.author]);
 
-  const deleteThisComment = (event) => {
-    event.preventDefault();
-    // setChangeCommentBool(true);
-    deleteComment(comment.comment_id).then((data) => {
-      setChangeCommentBool(!changeCommentBool);
-    });
-  };
+  // const deleteThisComment = (event) => {
+  //   setChangeCommentBool(true);
+  //   event.preventDefault();
+  //   deleteComment(comment.comment_id).then((data) => {
+  //     setChangeCommentBool(false);
+  //   });
+  // };
 
   return (
     <div className="commentCard">
@@ -29,9 +29,9 @@ const CommentCard = ({ comment, changeCommentBool, setChangeCommentBool }) => {
 
       {correctUser ? (
         <button
-          onClick={(event) => {
-            deleteThisComment(event);
-          }}
+        // onClick={(event) => {
+        //   deleteThisComment(event);
+        // }}
         >
           Delete
         </button>

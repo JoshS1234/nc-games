@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { uploadComment } from "./API-calls";
 
-const AddComment = ({ review_id, changeCommentBool, setChangeCommentBool }) => {
+const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   const [isPosting, setIsPosting] = useState(false);
 
   const createCommentAndUpload = (event) => {
@@ -13,9 +13,11 @@ const AddComment = ({ review_id, changeCommentBool, setChangeCommentBool }) => {
     };
 
     setIsPosting(true);
+    setAddCommentBool(true);
     uploadComment(review_id, commentToPost).then((data) => {
+      console.log("Upload complete");
       setIsPosting(false);
-      setChangeCommentBool(!changeCommentBool);
+      setAddCommentBool(false);
     });
   };
 
