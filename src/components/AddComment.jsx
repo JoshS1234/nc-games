@@ -1,30 +1,27 @@
 import { useState } from "react";
 import { uploadComment } from "./API-calls";
 
-const AddComment = ({ review_id, newCommentBool, setNewCommentBool }) => {
+const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   const [isPosting, setIsPosting] = useState(false);
 
   const createCommentAndUpload = (event) => {
     event.preventDefault();
     //hardcode the user here
     const commentToPost = {
-      username: "tickle122",
+      username: "jessjelly",
       body: event.target.textEntry.value,
     };
 
-    // console.log(commentToPost);
-
     setIsPosting(true);
-    setNewCommentBool(true);
+    setAddCommentBool(true);
     uploadComment(review_id, commentToPost).then((data) => {
-      console.log(data);
       setIsPosting(false);
-      setNewCommentBool(false);
+      setAddCommentBool(false);
     });
   };
 
   if (isPosting) {
-    return <h1>Comment is posting</h1>;
+    return <h1>Comment is posting addcomment</h1>;
   } else {
     return (
       <div>
