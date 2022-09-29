@@ -8,7 +8,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     event.preventDefault();
     //hardcode the user here
     const commentToPost = {
-      username: "tickle122",
+      username: "jessjelly",
       body: event.target.textEntry.value,
     };
 

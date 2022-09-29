@@ -7,7 +7,7 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   const [errorDeleting, setErrorDeleting] = useState(false);
 
   useEffect(() => {
-    if (comment.author === "tickle122") {
+    if (comment.author === "jessjelly") {
       setCorrectUser(true);
     } else {
       setCorrectUser(false);
@@ -20,7 +20,6 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
     deleteComment(comment.comment_id)
       .then((data) => {})
       .catch((err) => {
-        console.log(err.msg);
         setCommentDeleted(false);
         setErrorDeleting(true);
       });
