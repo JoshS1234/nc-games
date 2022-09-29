@@ -64,11 +64,9 @@ export const getCommentsForReview = (review_id) => {
 };
 
 export const uploadComment = (review_id, comment) => {
-  console.log(`/api/reviews/${review_id}/comments`, review_id, comment);
   return api
     .post(`/api/reviews/${review_id}/comments`, comment)
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {
@@ -78,6 +76,6 @@ export const uploadComment = (review_id, comment) => {
 
 export const deleteComment = (comment_id) => {
   return api.delete(`/api/comments/${comment_id}`).catch((err) => {
-    console.log(err);
+    return Promise.reject({ msg: "There was a problem deleting this" });
   });
 };

@@ -11,7 +11,6 @@ const SingleReview = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [addCommentBool, setAddCommentBool] = useState(false);
-  const [deleteCommentBool, setDeleteCommentBool] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,7 +18,7 @@ const SingleReview = () => {
       setSingleReviewObj(data);
       setIsLoading(false);
     });
-  }, [review_id]);
+  }, [review_id, addCommentBool]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -32,11 +31,7 @@ const SingleReview = () => {
           setAddCommentBool={setAddCommentBool}
           addCommentBool={addCommentBool}
         />
-        <CommentList
-          review_id={review_id}
-          deleteCommentBool={deleteCommentBool}
-          setDeleteCommentBool={setDeleteCommentBool}
-        />
+        <CommentList review_id={review_id} />
       </section>
     );
   }

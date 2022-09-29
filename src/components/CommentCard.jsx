@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   const [correctUser, setCorrectUser] = useState(false);
+  const [commentDeleted, setCommentDeleted] = useState(false);
+  const [errorDeleting, setErrorDeleting] = useState(false);
 
   useEffect(() => {
     if (comment.author === "tickle122") {
@@ -13,33 +15,41 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   }, [comment.author]);
 
   const deleteThisComment = (event) => {
-    setDeleteCommentBool(true);
     event.preventDefault();
-    deleteComment(comment.comment_id).then((data) => {
-      console.log("deleted");
-      setDeleteCommentBool(false);
-    });
+    setCommentDeleted(true);
+    deleteComment(comment.comment_id)
+      .then((data) => {})
+      .catch((err) => {
+        console.log(err.msg);
+        setCommentDeleted(false);
+        setErrorDeleting(true);
+      });
   };
 
-  return (
-    <div className="commentCard">
-      <h4>Username: {comment.author}</h4>
-      <h4>Comment: {comment.body}</h4>
-      <h4>Date: {comment.created_at}</h4>
-      <h4>Votes: {comment.votes}</h4>
+  if (commentDeleted && !errorDeleting) {
+    return <></>;
+  } else {
+    return (
+      <div className="commentCard">
+        {errorDeleting ? <h3>There was an error deleting this</h3> : <></>}
+        <h4>Username: {comment.author}</h4>
+        <h4>Comment: {comment.body}</h4>
+        <h4>Date: {comment.created_at}</h4>
+        <h4>Votes: {comment.votes}</h4>
 
-      {correctUser ? (
-        <button
-          onClick={(event) => {
-            deleteThisComment(event);
-          }}
-        >
-          Delete
-        </button>
-      ) : (
-        <p></p>
-      )}
-    </div>
-  );
+        {correctUser ? (
+          <button
+            onClick={(event) => {
+              deleteThisComment(event);
+            }}
+          >
+            Delete
+          </button>
+        ) : (
+          <p></p>
+        )}
+      </div>
+    );
+  }
 };
 export default CommentCard;

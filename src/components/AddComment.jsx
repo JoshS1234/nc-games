@@ -15,14 +15,13 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     setIsPosting(true);
     setAddCommentBool(true);
     uploadComment(review_id, commentToPost).then((data) => {
-      console.log("Upload complete");
       setIsPosting(false);
       setAddCommentBool(false);
     });
   };
 
   if (isPosting) {
-    return <h1>Comment is posting</h1>;
+    return <h1>Comment is posting addcomment</h1>;
   } else {
     return (
       <div>
