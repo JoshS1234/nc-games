@@ -13,19 +13,23 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
       body: event.target.textEntry.value,
     };
 
-    setIsPosting(true);
     // setAddCommentBool(!addCommentBool);
-    uploadComment(review_id, commentToPost)
-      .then((data) => {
-        setIsPosting(false);
-        setIsError("");
-        setAddCommentBool(!addCommentBool);
-      })
-      .catch((err) => {
-        // setAddCommentBool(!addCommentBool);
-        setIsPosting(false);
-        setIsError(err.msg);
-      });
+    if (commentToPost.body.length > 0) {
+      setIsPosting(true);
+      uploadComment(review_id, commentToPost)
+        .then((data) => {
+          setIsPosting(false);
+          setIsError("");
+          setAddCommentBool(!addCommentBool);
+        })
+        .catch((err) => {
+          // setAddCommentBool(!addCommentBool);
+          setIsPosting(false);
+          setIsError(err.msg);
+        });
+    } else {
+      setIsError("Need to input a comment");
+    }
   };
 
   if (isPosting) {
