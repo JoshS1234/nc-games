@@ -18,9 +18,11 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     uploadComment(review_id, commentToPost)
       .then((data) => {
         setIsPosting(false);
+        setIsError("");
         setAddCommentBool(!addCommentBool);
       })
       .catch((err) => {
+        // setAddCommentBool(!addCommentBool);
         setIsPosting(false);
         setIsError(err.msg);
       });
