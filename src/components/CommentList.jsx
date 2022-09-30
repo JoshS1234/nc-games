@@ -27,7 +27,16 @@ const CommentList = ({ review_id }) => {
   } else if (isLoading) {
     return <h1>Loading...</h1>;
   } else if (commentList.length === 0) {
-    return <h1>No comments</h1>;
+    return (
+      <div>
+        <AddComment
+          review_id={review_id}
+          setAddCommentBool={setAddCommentBool}
+          addCommentBool={addCommentBool}
+        />
+        <h1>No comments</h1>;
+      </div>
+    );
   } else {
     return (
       <>

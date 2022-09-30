@@ -18,7 +18,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     };
 
     setIsError("");
-    if (commentToPost.body.length > 0) {
+    if (commentToPost.body.length > 0 && currentUser.username) {
       setIsPosting(true);
       uploadComment(review_id, commentToPost)
         .then((data) => {
@@ -30,8 +30,12 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
           setIsPosting(false);
           setIsError(err.msg);
         });
-    } else {
+    } else if (commentToPost.body.length === 0) {
       setIsError("Need to input a comment");
+    } else if (currentUser.username === undefined) {
+      setIsError("Need to be logged in to post comments");
+    } else {
+      setIsError("Unknown error");
     }
   };
 
@@ -39,7 +43,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
     return <h1>Comment is posting addcomment</h1>;
   } else {
     return (
-      <div>
+      <div className="addCommentBox">
         <h1>{isError}</h1>
         <form
           onSubmit={(event) => {
