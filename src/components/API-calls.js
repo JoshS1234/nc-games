@@ -130,3 +130,11 @@ export const deleteComment = (comment_id) => {
     return Promise.reject({ msg: "There was a problem deleting this" });
   });
 };
+
+export const getUsers = () => {
+  return api.get("/api/users").catch((err) => {
+    return Promise.reject({
+      msg: "There was an error retrieving the user data",
+    });
+  });
+};
