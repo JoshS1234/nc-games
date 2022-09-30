@@ -7,7 +7,7 @@ import { useContext } from "react";
 const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   const [isPosting, setIsPosting] = useState(false);
   const [isError, setIsError] = useState("");
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const createCommentAndUpload = (event) => {
     event.preventDefault();

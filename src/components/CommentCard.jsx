@@ -8,7 +8,7 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   const [correctUser, setCorrectUser] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [errorDeleting, setErrorDeleting] = useState(false);
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
     if (comment.author === currentUser.username) {
@@ -16,7 +16,7 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
     } else {
       setCorrectUser(false);
     }
-  }, [comment.author]);
+  }, [comment.author, currentUser.username]);
 
   const deleteThisComment = (event) => {
     event.preventDefault();

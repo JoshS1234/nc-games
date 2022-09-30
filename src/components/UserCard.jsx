@@ -9,6 +9,11 @@ const UserCard = ({ user }) => {
     setCurrentUser(user);
   };
 
+  const userLogout = (event) => {
+    event.preventDefault();
+    setCurrentUser({});
+  };
+
   return (
     <div className="userCard">
       <img
@@ -18,13 +23,26 @@ const UserCard = ({ user }) => {
       />
       <h4>Username: {user.username}</h4>
       <h4>User: {user.name}</h4>
-      <button
-        onClick={(event) => {
-          userLogin(event);
-        }}
-      >
-        Login
-      </button>
+      {user.username === currentUser.username ? (
+        <div>
+          <h5>Currently logged in</h5>
+          <button
+            onClick={(event) => {
+              userLogout(event);
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={(event) => {
+            userLogin(event);
+          }}
+        >
+          Login
+        </button>
+      )}
     </div>
   );
 };
