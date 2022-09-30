@@ -3,15 +3,12 @@ import ReviewCardFull from "./ReviewCardFull";
 import { getReviewWithID } from "./API-calls";
 import { useEffect, useState } from "react";
 import CommentList from "./CommentList";
-import AddComment from "./AddComment";
 
 const SingleReview = () => {
   const [singleReviewObj, setSingleReviewObj] = useState({});
   const review_id = useParams().review_id;
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState("");
-
-  const [addCommentBool, setAddCommentBool] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,7 +20,7 @@ const SingleReview = () => {
       .catch((err) => {
         setIsError(err.msg);
       });
-  }, [addCommentBool]);
+  }, [review_id]);
 
   if (isError) {
     return <h1>{isError}</h1>;
@@ -33,12 +30,8 @@ const SingleReview = () => {
     return (
       <section>
         <ReviewCardFull singleReviewObj={singleReviewObj} />
-        <AddComment
-          review_id={review_id}
-          setAddCommentBool={setAddCommentBool}
-          addCommentBool={addCommentBool}
-        />
-        <CommentList review_id={review_id} addCommentBool={setAddCommentBool} />
+
+        <CommentList review_id={review_id} />
       </section>
     );
   }
