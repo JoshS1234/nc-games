@@ -31,6 +31,7 @@ const ReviewList = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsError("");
 
     getCategoryList()
       .then((output) => {
@@ -55,7 +56,7 @@ const ReviewList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setIsError(false);
+    setIsError("");
     getReviewList()
       .then((output) => {
         setReviewList(output);

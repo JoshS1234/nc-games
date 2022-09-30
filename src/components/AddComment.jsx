@@ -13,7 +13,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
       body: event.target.textEntry.value,
     };
 
-    // setAddCommentBool(!addCommentBool);
+    setIsError("");
     if (commentToPost.body.length > 0) {
       setIsPosting(true);
       uploadComment(review_id, commentToPost)
@@ -23,7 +23,6 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
           setAddCommentBool(!addCommentBool);
         })
         .catch((err) => {
-          // setAddCommentBool(!addCommentBool);
           setIsPosting(false);
           setIsError(err.msg);
         });

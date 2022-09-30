@@ -13,7 +13,7 @@ const ReviewCardFull = ({ singleReviewObj }) => {
   };
 
   const upvoteFunction = (event) => {
-    setIsError(false);
+    setIsError("");
     event.preventDefault();
     const newReviewObj = { ...reviewState };
     newReviewObj.votes += 1;

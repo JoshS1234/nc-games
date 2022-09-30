@@ -11,6 +11,7 @@ const CommentList = ({ review_id }) => {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsError("");
     getCommentsForReview(review_id)
       .then(({ comments }) => {
         setCommentList(comments);

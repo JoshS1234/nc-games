@@ -12,6 +12,7 @@ const SingleReview = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsError("");
     getReviewWithID(review_id)
       .then((data) => {
         setSingleReviewObj(data);

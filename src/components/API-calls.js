@@ -87,7 +87,7 @@ export const getReviewWithID = (review_id) => {
 
 export const upvoteReviewWithID = (review_id) => {
   return api
-    .patch(`/api/reviews/${review_id}`, { inc_votes: "a" })
+    .patch(`/api/reviews/${review_id}`, { inc_votes: 1 })
     .then(({ data }) => {
       return data.reviews;
     })
