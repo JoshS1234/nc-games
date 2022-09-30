@@ -7,14 +7,13 @@ const UserList = () => {
 
   useEffect(() => {
     getUsers().then(({ data }) => {
-      console.log(data);
       setUserList(data.users);
     });
   }, []);
 
   return (
     <div>
-      <h1>The user list router is working</h1>
+      <h2>Users List</h2>
       <ul className="userList">
         {userList.map((user) => {
           return (

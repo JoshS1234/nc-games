@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { uploadComment } from "./API-calls";
 
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
+
 const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   const [isPosting, setIsPosting] = useState(false);
   const [isError, setIsError] = useState("");
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const createCommentAndUpload = (event) => {
     event.preventDefault();
     //hardcode the user here
     const commentToPost = {
-      username: "jessjelly",
+      username: currentUser.username,
       body: event.target.textEntry.value,
     };
 

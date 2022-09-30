@@ -1,4 +1,14 @@
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
+
 const UserCard = ({ user }) => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const userLogin = (event) => {
+    event.preventDefault();
+    setCurrentUser(user);
+  };
+
   return (
     <div className="userCard">
       <img
@@ -8,7 +18,13 @@ const UserCard = ({ user }) => {
       />
       <h4>Username: {user.username}</h4>
       <h4>User: {user.name}</h4>
-      <button>Login</button>
+      <button
+        onClick={(event) => {
+          userLogin(event);
+        }}
+      >
+        Login
+      </button>
     </div>
   );
 };

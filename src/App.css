@@ -5,6 +5,12 @@ body {
   background-color: rgb(155, 235, 255);
 }
 
+Link:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 img {
   width:min(40%, 300px);
   height:min(40%, 300px);
@@ -73,7 +79,8 @@ text-align: center;
   width:min(6em,100px);
   height:min(6em,100px);
   border-radius:50%;
-  border: solid 2px
+  border: solid 2px;
+  margin: 1%
 }
 
 .userCard {
@@ -84,6 +91,16 @@ text-align: center;
   border: solid 2px;
   border-radius: 5%
 }
+
+.logInBox {
+  background-color: rgb(181, 246, 199);
+  width: min(50%, 200px);
+  padding: 0% 0% 1% 0%;
+  margin: 2% auto;
+  border: solid 2px;
+  border-radius: 5%
+}
+
 
 /* These are the PC updates for CSS 
 (if the screen is under 800px then do this */

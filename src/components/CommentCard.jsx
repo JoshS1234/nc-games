@@ -1,13 +1,17 @@
 import { deleteComment } from "./API-calls";
 import { useEffect, useState } from "react";
 
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
+
 const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   const [correctUser, setCorrectUser] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [errorDeleting, setErrorDeleting] = useState(false);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (comment.author === "jessjelly") {
+    if (comment.author === currentUser.username) {
       setCorrectUser(true);
     } else {
       setCorrectUser(false);
