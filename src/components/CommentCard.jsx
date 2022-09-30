@@ -17,13 +17,11 @@ const CommentCard = ({ comment, deleteCommentBool, setDeleteCommentBool }) => {
   const deleteThisComment = (event) => {
     event.preventDefault();
     setCommentDeleted(true);
-    setErrorDeleting(false);
-    deleteComment(comment.comment_id)
-      .then((data) => {})
-      .catch((err) => {
-        setCommentDeleted(false);
-        setErrorDeleting(true);
-      });
+    // setErrorDeleting(false);
+    deleteComment(comment.comment_id).catch((err) => {
+      setCommentDeleted(false);
+      setErrorDeleting(true);
+    });
   };
 
   if (commentDeleted && !errorDeleting) {
