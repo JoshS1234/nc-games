@@ -4,7 +4,7 @@ import { upvoteReviewWithID } from "./API-calls";
 
 const ReviewCardFull = ({ singleReviewObj }) => {
   const [reviewState, setReviewState] = useState(singleReviewObj);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState("");
   const navigate = useNavigate();
 
   const redirectToReviews = (event) => {
@@ -13,12 +13,12 @@ const ReviewCardFull = ({ singleReviewObj }) => {
   };
 
   const upvoteFunction = (event) => {
-    setIsError(false);
+    setIsError("");
     event.preventDefault();
     const newReviewObj = { ...reviewState };
     newReviewObj.votes += 1;
     upvoteReviewWithID(reviewState.review_id).catch((err) => {
-      setIsError(true);
+      setIsError(err.msg);
       newReviewObj.votes -= 1;
     });
     setReviewState(newReviewObj);
@@ -46,7 +46,7 @@ const ReviewCardFull = ({ singleReviewObj }) => {
       <h4>Comment Count: {reviewState.comment_count}</h4>
       <h4>Posted at: {reviewState.created_at}</h4>
       <div>
-        {isError ? <h3>There was an upvote error</h3> : <></>}
+        {isError ? <h3>{isError}</h3> : <></>}
 
         <h4>
           Upvotes: {reviewState.votes}{" "}

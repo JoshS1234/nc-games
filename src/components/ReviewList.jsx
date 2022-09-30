@@ -21,6 +21,8 @@ const ReviewList = () => {
   const [sortBasedOn, setSortBasedOn] = useState("Date");
   const [isAsc, setIsAsc] = useState("asc");
 
+  const [isError, setIsError] = useState("");
+
   const [filterObj, setFilterObj] = useState({
     category: "All",
     owner: "All",
@@ -29,6 +31,7 @@ const ReviewList = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsError("");
 
     getCategoryList()
       .then((output) => {
@@ -45,16 +48,23 @@ const ReviewList = () => {
       .then((output) => {
         setDesignerList(["All", ...output]);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.msg);
       });
   }, []);
 
   useEffect(() => {
     setIsLoading(true);
-
-    getReviewList().then((output) => {
-      setReviewList(output);
-      setIsLoading(false);
-    });
+    setIsError("");
+    getReviewList()
+      .then((output) => {
+        setReviewList(output);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.msg);
+      });
   }, [searchParams]);
 
   const formSubmitFunction = (event) => {
@@ -69,7 +79,9 @@ const ReviewList = () => {
     setSearchParams(params);
   };
 
-  if (isLoading) {
+  if (isError) {
+    return <h1>{isError}</h1>;
+  } else if (isLoading) {
     return <h1>Loading...</h1>;
   } else {
     return (
