@@ -5,6 +5,12 @@ body {
   background-color: rgb(155, 235, 255);
 }
 
+Link:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 img {
   width:min(40%, 300px);
   height:min(40%, 300px);
@@ -62,9 +68,54 @@ ul {
   border-radius:10%;
 }
 
+.userList {
+  display: flex;
+flex-wrap: nowrap;
+flex-direction: column;
+text-align: center;
+}
+
+.profilePicture {
+  width:min(6em,100px);
+  height:min(6em,100px);
+  border-radius:50%;
+  border: solid 2px;
+  margin: 1%
+}
+
+.userCard {
+  background-color: rgb(244, 244, 190);
+  width:80%;
+  padding: 2% 0% 2% 0%;
+  margin: 2% auto;
+  border: solid 2px;
+  border-radius: 5%
+}
+
+.logInBox {
+  background-color: rgb(181, 246, 199);
+  width: min(50%, 200px);
+  padding: 0% 0% 1% 0%;
+  margin: 2% auto;
+  border: solid 2px;
+  border-radius: 5%
+}
+
+
 /* These are the PC updates for CSS 
 (if the screen is under 800px then do this */
 @media screen and (min-width:800px) {
+
+  /* .userCard {
+    width:100%;
+  }
+
+  .userList {
+    display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  } */
+
   .reviewCardBrief {
     width:40%;
     height: 40%;
