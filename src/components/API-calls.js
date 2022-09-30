@@ -79,8 +79,9 @@ export const getReviewWithID = (review_id) => {
       return data.reviews;
     })
     .catch((err) => {
+      console.log(err);
       return Promise.reject({
-        msg: "There was an error with retrieving the review with this ID",
+        msg: "Error 404, this review ID does not exist",
       });
     });
 };

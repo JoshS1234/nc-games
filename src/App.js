@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import ReviewList from "./components/ReviewList";
 import SingleReview from "./components/SingleReview";
 import UserList from "./components/UserList";
+import PageNotFound from "./components/PageNotFound";
 import { Routes, Route } from "react-router";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/review-list" element={<ReviewList />}></Route>
         <Route path="review-list/:review_id" element={<SingleReview />}></Route>
         <Route path="/user-list" element={<UserList />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </div>
   );
