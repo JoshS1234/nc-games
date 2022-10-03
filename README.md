@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+##
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+What is this repo???
 
-## Available Scripts
+This is a react app which will display data about (fictional) board games. It has data about the games themselves, reviews, users, and comments. Users will be able to login, read and vote on reviews, post comments, and delete their own comments.
 
-In the project directory, you can run:
+##
 
-### `npm start`
+Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This was developed using Node v18.8.0
+It may work on versions lower than this but if it isn't check that you are updated to these versions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##
 
-### `npm test`
+Basic setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###
 
-### `npm run build`
+Step 1: Cloning the repo
+(if you want to have ownership of a copy of the repo) press "fork" from the repo from here: https://github.com/JoshS1234/nc-games
+Navigate using the linux terminal to the desired location for the local copy of the repo
+use "git clone https://github.com/JoshS1234/nc-games" (if not forked) OR "git clone <your github link>" (if forked)
+install any dependencies: use the linux command "npm i" when you are in the repo directory
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Step 2:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+use "npm start" to locally host the API, it will default to port 9090.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##
 
-### `npm run eject`
+Using the API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The user will be on the homepage from the base URL. In order to comment or post/delete, the user will need to login. This is done from the users page (or by pressing login on the current user card).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Additional Information
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+There is a link to a hosted version of the site here: https://sunny-narwhal-f4e1dd.netlify.app/
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+There is a link to the backend API used here: https://my-backend-server-josh.herokuapp.com/
