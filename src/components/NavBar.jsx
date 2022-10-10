@@ -2,19 +2,19 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div>
-      <nav>
+    <>
+      <nav id="navBar">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/"><button className="navButton">Home</button></Link>
         </li>
         <li>
-          <Link to="/review-list">Reviews</Link>
+          <Link to="/review-list"><button className="navButton">Reviews</button></Link>
         </li>
         <li>
-          <Link to="/user-list">Users</Link>
+          <Link to="/user-list"><button className="navButton">Login</button></Link>
         </li>
       </nav>
-    </div>
+        </>
   );
 };
 

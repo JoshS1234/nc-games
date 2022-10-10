@@ -1,45 +1,82 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+*/
 body {
   padding: 0px;
   margin: 0px;
   text-align: center;
   background-color: rgb(155, 235, 255);
 }
-
-Link:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-img {
-  width:min(40%, 300px);
-  height:min(40%, 300px);
-  border-radius:10%;
-}
-
-ul {
+  img {
+    width:min(40%, 300px);
+    height:min(40%, 300px);
+    border-radius:10%;
+  }
+#headerBar {
   display: flex;
-flex-wrap: wrap;
-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(255, 176, 57);
+  width: 100%
+}
+.logInBox {
+  background-color: rgb(181, 246, 199);
+  width: min(50%, 200px);
+  padding: 0% 0% 1% 0%;
+  margin: 1% 1%;
+  border: solid 2px;
+  border-radius: 5%
+}
+.profilePicture {
+  width:min(5em,100px);
+  height:min(5em,100px);
+  border-radius:50%;
+  border: solid 2px;
+  margin: 1%
+}
+#titleBanner {
+  font-family: "Silkscreen", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1% 0% 1% 0%;
+  flex-grow: 4;
+}
+#navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  background-color: rgb(161, 140, 255);
+  padding: 1% 0% 1% 0%;
 }
 
+.navButton {
+  background-color: rgb(195, 134, 252);
+  padding: 1% 1% 1% 1%;
+  font-size: 1.5em;
+} 
+li {
+  list-style-type: none;
+}
+#reviewList {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 0% 10%;
+}
 .reviewCardBrief {
   background-color: rgb(193, 248, 255);
-  list-style-type: none;
-  width:90%;
-  height: 90%;
+  width:100%;
   padding: 0% 0% 1% 0%;
   margin: 1% auto;
   border: solid 2px;
   border-radius: 5%
 }
-
 .reviewCardFull {
   background-color: rgb(193, 248, 255);
   list-style-type: none;
-  width:90%;
+  width:80%;
   height: 90%;
-  padding: 0% 0% 1% 0%;
+  padding: 1% 5% 1% 5%;
   margin: 1% auto;
   border: solid 2px;
   border-radius: 5%
@@ -54,13 +91,6 @@ flex-direction: row;
   border: solid 2px;
   border-radius: 5%
 }
-li {
-  list-style-type: none;
-}
-
-ul {
-  
-}
 
 .fullReviewImg {
   width:min(50%, 200px);
@@ -68,56 +98,106 @@ ul {
   border-radius:10%;
 }
 
-.userList {
+
+
+#filterSortForm {
+  background-color: rgb(205, 174, 255);
+  border-radius: 2%;
+  padding: 0% 0% 2% 0%;
+  width:90%;
+  margin: 1% auto;
+}
+#sortAndFilter {
   display: flex;
-flex-wrap: nowrap;
-flex-direction: column;
-text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2% 0% 2% 0%
 }
 
-.profilePicture {
-  width:min(6em,100px);
-  height:min(6em,100px);
+#filterOn {
+  display: flex;
+  flex-direction: column;
+  /* padding: 2% 30% 2% 30%; */
+}
+#sortOn {
+  display: flex;
+  flex-direction: column;
+  /* padding: 2% 30% 2% 30%; */
+}
+
+.userList {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.userCard {
+  margin: 1% auto;
+  background-color: rgb(244, 244, 190);
+  border: solid 2px;
+  border-radius: 5%
+}
+.profilePictureUserCard {
+  width:min(5em,100px);
+  height:min(5em,100px);
   border-radius:50%;
   border: solid 2px;
   margin: 1%
 }
-
-.userCard {
-  background-color: rgb(244, 244, 190);
-  width:80%;
-  padding: 2% 0% 2% 0%;
-  margin: 2% auto;
-  border: solid 2px;
-  border-radius: 5%
+/*
+ul {
+  display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+}
+Link:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.logInBox {
-  background-color: rgb(181, 246, 199);
-  width: min(50%, 200px);
-  padding: 0% 0% 1% 0%;
-  margin: 2% auto;
-  border: solid 2px;
-  border-radius: 5%
+
+.userList {
+  display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+text-align: center;
 }
+
+
+
+
 
 .addCommentBox {
   margin: 2% auto;
 }
 
+
+
+*/
+
+
+
+
 /* These are the PC updates for CSS 
 (if the screen is under 800px then do this */
-@media screen and (min-width:800px) {
+/* @media screen and (min-width:800px) { */
 
   /* .userCard {
     width:100%;
   }
+
+  
 
   .userList {
     display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   } */
+
+  /* .userCard {
+    width:40%;
+    height: 40%;
+  }
 
   .reviewCardBrief {
     width:40%;
@@ -132,5 +212,5 @@ text-align: center;
   .commentCard {
     width:60%;
     height: 40%;
-  }
-}
+  } */
+/* } */

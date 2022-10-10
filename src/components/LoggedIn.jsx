@@ -20,7 +20,7 @@ const LoggedIn = ({ user }) => {
           alt="guest profile"
           className="profilePicture"
         />
-        <h3>Not logged in</h3>
+        <h5>Not logged in</h5>
         <button>
           <Link to="/user-list">Log in</Link>
         </button>
@@ -34,7 +34,7 @@ const LoggedIn = ({ user }) => {
           alt="guest profile"
           className="profilePicture"
         />
-        <h3>Logged in as: {currentUser.username}</h3>
+        <h5>User: {currentUser.username}</h5>
         <button
           onClick={(event) => {
             userLogout(event);

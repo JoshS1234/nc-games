@@ -15,11 +15,11 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="userCard">
+    <div>
       <img
         src={`${user.avatar_url}`}
         alt={`portrait of ${user.avatar_url}`}
-        className="profilePicture"
+        className="profilePictureUserCard"
       />
       <h4>Username: {user.username}</h4>
       <h4>User: {user.name}</h4>

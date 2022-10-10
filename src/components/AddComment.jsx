@@ -40,7 +40,7 @@ const AddComment = ({ review_id, addCommentBool, setAddCommentBool }) => {
   };
 
   if (isPosting) {
-    return <h1>Comment is posting addcomment</h1>;
+    return <h1>Comment is posting...</h1>;
   } else {
     return (
       <div className="addCommentBox">

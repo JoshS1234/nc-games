@@ -12,12 +12,12 @@ const UserList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="userList">
       <h2>Users List</h2>
-      <ul className="userList">
+      <ul >
         {userList.map((user) => {
           return (
-            <li key={user.username}>
+            <li key={user.username} className="userCard">
               <UserCard user={user} />
             </li>
           );

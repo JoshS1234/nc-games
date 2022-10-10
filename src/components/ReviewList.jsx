@@ -23,6 +23,8 @@ const ReviewList = () => {
 
   const [isError, setIsError] = useState("");
 
+  const [hideFilters, setHideFilters] = useState(true)
+
   const [filterObj, setFilterObj] = useState({
     category: "All",
     owner: "All",
@@ -87,12 +89,18 @@ const ReviewList = () => {
     return (
       <div>
         <h1>Review List</h1>
+
+        {hideFilters ? <button onClick={(event)=>{setHideFilters(false)}}>Show filter options</button> : 
+        <>
+        <button onClick={(event)=>{setHideFilters(true)}}>Hide filter options</button>
         <form
           onSubmit={(event) => {
             formSubmitFunction(event);
           }}
+          id="filterSortForm"
         >
-          <div>
+          <div id="sortAndFilter">
+            <div id="filterOn">
             <h3>Filter by:</h3>
             <label htmlFor="categoryFilter">Categories</label>
             <select
@@ -145,15 +153,18 @@ const ReviewList = () => {
             isAsc={isAsc}
             setIsAsc={setIsAsc}
           />
-          <div>
-            <button>Sort and Filter</button>
+          </div>
+            <div>
+          <button>Sort and Filter</button>
           </div>
         </form>
+        </>}
+
 
         {reviewList.length === 0 ? (
           <h1>No results found!</h1>
         ) : (
-          <ul>
+          <ul id="reviewList">
             {reviewList.map((review) => {
               return (
                 <li key={review.review_id} className="reviewCardBrief">

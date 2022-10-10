@@ -1,6 +1,6 @@
 const ReviewListSort = ({ sortBasedOn, setSortBasedOn, isAsc, setIsAsc }) => {
   return (
-    <div>
+    <div id="sortOn">
       <h3>Sorting: </h3>
       <label htmlFor="sort_by">Sort by:</label>
       <select
@@ -21,7 +21,7 @@ const ReviewListSort = ({ sortBasedOn, setSortBasedOn, isAsc, setIsAsc }) => {
         </option>
       </select>
 
-      <label htmlFor="ascdesc"></label>
+      <label htmlFor="ascdesc">Order:</label>
       <select
         id="ascdesc"
         value={isAsc}
