@@ -19,7 +19,6 @@ function App() {
       <div className={`App__${currentUser}`}>
         <TitleBanner />
         <NavBar />
-        {/* <LoggedIn /> */}
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/review-list" element={<ReviewList />}></Route>
