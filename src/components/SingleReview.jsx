@@ -23,8 +23,6 @@ const SingleReview = () => {
       });
   }, [review_id]);
 
-  console.log(singleReviewObj);
-
   if (isError) {
     return <h1>{isError}</h1>;
   } else if (isLoading) {

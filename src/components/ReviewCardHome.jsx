@@ -12,6 +12,11 @@ const ReviewCardHome = ({ singleReviewObj }) => {
     navigate(`/review-list`);
   };
 
+  const redirectToFullCard = (event) => {
+    event.preventDefault();
+    navigate(`/review-list/${singleReviewObj.review_id}`);
+  };
+
   const upvoteFunction = (event) => {
     setIsError("");
     event.preventDefault();
@@ -33,7 +38,6 @@ const ReviewCardHome = ({ singleReviewObj }) => {
         className="fullReviewImg"
       />
       <h4>Category: {reviewState.category}</h4>
-      <h4>Review: {reviewState.review_body}</h4>
       <h4>Posted by: {reviewState.owner}</h4>
       <h4>Game designer: {reviewState.designer}</h4>
       <h4>Comment Count: {reviewState.comment_count}</h4>
@@ -52,6 +56,13 @@ const ReviewCardHome = ({ singleReviewObj }) => {
             +1 upvote
           </button>
         </h4>
+        <button
+          onClick={(event) => {
+            redirectToFullCard(event);
+          }}
+        >
+          Read full review...
+        </button>
       </div>
     </div>
   );
