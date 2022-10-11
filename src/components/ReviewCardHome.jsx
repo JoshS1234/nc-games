@@ -7,11 +7,6 @@ const ReviewCardHome = ({ singleReviewObj }) => {
   const [isError, setIsError] = useState("");
   const navigate = useNavigate();
 
-  const redirectToReviews = (event) => {
-    event.preventDefault();
-    navigate(`/review-list`);
-  };
-
   const redirectToFullCard = (event) => {
     event.preventDefault();
     navigate(`/review-list/${singleReviewObj.review_id}`);
